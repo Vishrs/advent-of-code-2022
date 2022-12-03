@@ -1,6 +1,8 @@
+import os
+import heapq
 def read_calories():
 
-    with open('./inputs.txt') as inputs:
+    with open('inputs.txt') as inputs:
         total = 0
         for line in inputs:
             if line.strip().isnumeric():
@@ -11,8 +13,16 @@ def read_calories():
         
 
 if __name__ == '__main__':
-    max_calories = 0
-    for total in read_calories():
-        max_calories = max(total, max_calories)
     
-    print(max_calories)
+    calories = []
+    TOP_K = 3
+
+
+    for total in read_calories():
+        heapq.heappush(calories, -total)
+    
+    total = 0
+    for i in range(TOP_K):
+        total += abs(heapq.heappop(calories))
+    
+    print(total)
