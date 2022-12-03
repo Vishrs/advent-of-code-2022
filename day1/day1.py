@@ -1,6 +1,6 @@
 def read_calories():
 
-    with open('/Users/tjw815/projects/adventOfCode2022/advent-of-code-2022/day1/inputs.txt') as inputs:
+    with open('./inputs.txt') as inputs:
         total = 0
         for line in inputs:
             if line.strip().isnumeric():
